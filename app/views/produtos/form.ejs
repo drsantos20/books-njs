@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Adicionar um novo livro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="icon" href="http://www.absoluteozone.com/images/printed-matter-books-icon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="errors">
+    <%if(validationErrors) { %>
+    <ul>
+        <% for(var i=0; i<validationErrors.length; i++) {%>
+        <li><%=validationErrors[i].param%> - <%=validationErrors[i].msg%></li>
+        <% } %>
+    </ul>
+    <%}%>
+</div>
+<div class="container">
+  <h2>Adicionar um novo livro</h2>  
+  <form role="form" action="/produtos" method="post">
+    <div class="form-group">
+        <label for="titulo">Titulo do Livro</label>
+    <input type="text" name="titulo" placeholder="titulo do livro" value="<%=produto.titulo%>" class="form-control"/>     
+    </div>
+    <div class="form-group">
+      <label for="preco">Preço do Livro</label>
+    <input type="text" name="preco" placeholder="titulo do livro" value="<%=produto.preco%>" class="form-control"/>     
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição do Livro</label>
+        <textarea class="form-control" rows="5" id="descricao" name="descricao"></textarea>
+    </div>
+      <input type="submit" class="btn btn-info" value="Gravar">
+  </form>
+</div>
+</body>
+</html>

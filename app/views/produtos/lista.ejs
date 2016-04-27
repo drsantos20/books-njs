@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Livros</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="icon" href="http://www.absoluteozone.com/images/printed-matter-books-icon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Produtos</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#contact">Contatos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">Sobre Nos</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div class="container">
+  <h2>Livros</h2>
+  <p>Listagem de livros cadastrados</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Descricao</th>
+        <th>Preco</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <%for(var i=0;i<lista.length;i++) {%>         
+          <tr>
+            <td><%=lista[i].id%></td>
+            <td><%=lista[i].titulo%></td>
+            <td><%=lista[i].descricao%></td>
+            <td><%=lista[i].preco%></td>
+          </tr>
+        <%}%>         
+      </tr>      
+      <script>
+        var socket = io();
+        socket.on('novaPromocao', function (data) {
+            alert(data.livro.id);
+        });
+      </script>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
