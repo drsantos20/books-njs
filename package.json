@@ -16,5 +16,12 @@
     "express-validator": "^2.20.3",
     "mysql": "^2.10.2",
     "socket.io": "^1.4.5"
+  },
+  "engines": {
+    "node": "0.12.4"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

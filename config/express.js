@@ -20,10 +20,16 @@ module.exports = function() {
 
     app.use(function(req, res, next){
         res.status(404).render("erros/404");
+        next();
     });
 
     app.use(function(error,req, res, next){
-        res.status(500).render("erros/500");
+        if(process.env.NODE_ENV == 'production') {
+            res.status(500).render('erros/500');
+            console.log(error);
+            return;
+        }
+        next(error);        
     });
     //tem que colocar na ordem, caso contrário ele passa pelo middleware e 
     //ainda não vai ter acontecido nenhum erro.
