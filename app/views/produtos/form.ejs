@@ -22,19 +22,25 @@
 <div class="container">
   <h2>Adicionar um novo livro</h2>  
   <form role="form" action="/produtos" method="post">
-    <div class="form-group">
+    <div class="row">
+    <div class="form-group col-xs-5">
         <label for="titulo">Titulo do Livro</label>
     <input type="text" name="titulo" placeholder="titulo do livro" value="<%=produto.titulo%>" class="form-control"/>     
     </div>
-    <div class="form-group">
+    </div>
+    <div class="row">
+    <div class="form-group col-xs-5">
       <label for="preco">Preço do Livro</label>
     <input type="text" name="preco" placeholder="titulo do livro" value="<%=produto.preco%>" class="form-control"/>     
     </div>
-    <div class="form-group">
+    </div>
+    <div class="row">
+    <div class="form-group col-xs-5">
         <label for="descricao">Descrição do Livro</label>
         <textarea class="form-control" rows="5" id="descricao" name="descricao"></textarea>
     </div>
-      <input type="submit" class="btn btn-info" value="Gravar">
+    </div>
+      <input type="submit" class="btn btn-success" value="Gravar">    <a href="/produtos" class="btn btn-info" role="button">Voltar</a>
   </form>
 </div>
 </body>
