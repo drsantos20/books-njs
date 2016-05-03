@@ -12,8 +12,25 @@ module.exports = function(app){
 		connection.end();
 	};
 	
+	//app.get("/produtos", listaProdutos);
 
-	app.get("/produtos", listaProdutos);
+	app.get('/produtos', function(req,res) {
+		var connection = app.infra.connectionFactory();
+		var produtosDAO = new app.infra.ProdutosDAO(connection);
+		console.log('teste');
+		if(!req.isAuthenticated()) {
+			console.log('req.isAuthenticated');
+      		res.redirect('/signin');
+	   } else {
+	   		produtosDAO.lista(function(erros,resultados){
+				res.render('produtos/lista',{lista:resultados});
+			});
+	   	}
+	});
+
+
+
+
 
 	app.post('/produtos/remove',function(req,res){
 		console.log(req.body.id);				
@@ -23,7 +40,7 @@ module.exports = function(app){
 
 			if(produto != null){			
 					produtosDAO.remove(req.body.id,function(erros,resultados){	
-					res.redirect('/produtos');
+					res.redirect('/produtos', {validationErrors:{}, lista: listaProdutos});
 				});	
 			};			
 		});
