@@ -31,6 +31,7 @@ var signIn = function(req, res, next) {
 // sign in
 // POST
 var signInPost = function(req, res, next) {
+   console.log(req)
    passport.authenticate('local', { successRedirect: '/',
                           failureRedirect: '/signin'}, function(err, user, info) {
       if(err) {

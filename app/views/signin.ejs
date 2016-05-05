@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <title><%= title %></title>
-   </head>
-   <body>
-      <h2>Sign In Form</h2>
-      <form method="post" action="/signin">
-		 
-         <% if(typeof(errorMessage) !== 'undefined') {%>
-            <span><%= errorMessage %></span>
-         <% } %>
-         <p>
-            <label for="username">username</label>
-            <input type="text" name="username" id="username"
-               placeholder="username" required="true"/>
-         </p>
-         <p>
-            <label for="password">password</label>
-            <input type="text" name="password" id="password"
-               placeholder="password" required="true"/>
-         </p>
-         <p>
-            <input type="submit" name="signin" id="signin" value="sign in"/> 
-            <a href="/signup" title="register">register</a>
-         </p>
-			
-      </form>
-   </body>
+<head>
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="icon" href="http://www.absoluteozone.com/images/printed-matter-books-icon.png">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/js/login.js"></script>
+</head>
+<body>
+    <div class="container">
+    
+        <div class="card card-container">            
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" method="post" action="/signin">
+             	<% if(typeof(errorMessage) !== 'undefined') {%>
+            		<span><%= errorMessage %></span>
+         		<% } %>
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="username" name="username" class="form-control" placeholder="User" required autofocus>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+</body>
 </html>
