@@ -12,24 +12,19 @@
   <script src="/js/login.js"></script>
 </head>
 <body>
-    <div class="container">
-    
-        <div class="card card-container">            
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin" method="post" action="/signin">
-             	<% if(typeof(errorMessage) !== 'undefined') {%>
-            		<span><%= errorMessage %></span>
-         		<% } %>
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="username" name="username" class="form-control" placeholder="User" required autofocus>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-            </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+  <div class="login-page">
+  <div class="form">
+    <form class="login-form" method="post" action="/signin">
+        <% if(typeof(errorMessage) !== 'undefined') {%>
+         		<span style="color:blue"><%= errorMessage %></span>
+         		<br></br>
+    	<% } %>
+      <input type="text" id="username" name="username" placeholder="username"/>
+      <input type="password" id="password" name="password" placeholder="password"/>
+      <button>Create</button>
+      <p class="message">Not registered? <a href="/signup">Create an account</a></p>
+    </form>
+  </div>
+</div>
 </body>
 </html>
