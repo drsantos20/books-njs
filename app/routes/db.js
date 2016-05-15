@@ -1,11 +1,12 @@
 var knex = require('knex')({
   client: 'mysql',
+  var url = process.env.CLEARDB_DATABASE_URL;
+  var grupos = url.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?/);
   connection: {
-	   host: 'us-cdbr-iron-east-03.cleardb.net',  // your host
-	   user: 'b2b9ea565e5785', // your database user
-	   password: 'afe978b0', // your database password
-	   database: 'heroku_7abc9251d3ac94f',
-	   charset: 'UTF8_GENERAL_CI'
+	host:grupos[3],
+	user:grupos[1],
+	password:grupos[2],
+	database:grupos[4]
   }
 });
 
